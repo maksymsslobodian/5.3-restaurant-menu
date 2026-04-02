@@ -1,10 +1,11 @@
-#початкове меню
+# початкове меню
 dishes = [
     {"name": "Борщ", "price": 100},
     {"name": "Вареники", "price": 80},
     {"name": "Узвар", "price": 30}
 ]
-#показує меню і його оформлення
+
+# показує меню і його оформлення
 def show_menu():
     print("\n" + "="*30)
     print("      МЕНЮ РЕСТОРАНУ")
@@ -12,7 +13,8 @@ def show_menu():
     for index, dish in enumerate(dishes, 1):
         print(f"{index}. {dish['name']:<15} | {dish['price']:>5} грн")
     print("="*30)
-#щоб додавати страви
+
+# щоб додавати страви
 def add_dish():
     print("\n--- Додавання нової страви ---")
     name = input("Введіть назву: ")
@@ -33,9 +35,9 @@ if __name__ == "__main__":
         print("1. Додати страву")
         print("2. Порахувати загальну суму")
         print("0. Вихід")
-        
+
         choice = input("\nОберіть дію: ")
-        
+
         if choice == "1":
             add_dish()
         elif choice == "2":
