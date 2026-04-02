@@ -1,0 +1,14 @@
+
+dishes = [
+    {"name": "Борщ", "price": 100},
+    {"name": "Вареники", "price": 80},
+    {"name": "Узвар", "price": 30}
+]
+
+def show_menu():
+    print("\n--- Меню ресторану ---")
+    for index, dish in enumerate(dishes, 1):
+        print(f"{index}. {dish['name']} - {dish['price']} грн")
+
+if __name__ == "__main__":
+    show_menu()
