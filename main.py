@@ -1,13 +1,49 @@
+# початкове меню
 dishes = [
     {"name": "Борщ", "price": 100},
     {"name": "Вареники", "price": 80},
     {"name": "Узвар", "price": 30}
 ]
 
+# показує меню і його оформлення
 def show_menu():
-    print("\n--- Меню ресторану ---")
+    print("\n" + "="*30)
+    print("      МЕНЮ РЕСТОРАНУ")
+    print("="*30)
     for index, dish in enumerate(dishes, 1):
-        print(f"{index}. {dish['name']} - {dish['price']} грн")
+        print(f"{index}. {dish['name']:<15} | {dish['price']:>5} грн")
+    print("="*30)
+
+# щоб додавати страви
+def add_dish():
+    print("\n--- Додавання нової страви ---")
+    name = input("Введіть назву: ")
+    try:
+        price = int(input("Введіть ціну: "))
+        dishes.append({"name": name, "price": price})
+        print(f"✅ Страву '{name}' додано успішно!")
+    except ValueError:
+        print("❌ Помилка! Ціна має бути числом.")
+
+def calculate_total():
+    total = sum(dish['price'] for dish in dishes)
+    print(f"\n💰 Загальна вартість усіх страв: {total} грн")
 
 if __name__ == "__main__":
-    show_menu()
+    while True:
+        show_menu()
+        print("1. Додати страву")
+        print("2. Порахувати загальну суму")
+        print("0. Вихід")
+
+        choice = input("\nОберіть дію: ")
+
+        if choice == "1":
+            add_dish()
+        elif choice == "2":
+            calculate_total()
+        elif choice == "0":
+            print("Дякуємо, що завітали!")
+            break
+        else:
+            print("❌ Невірний вибір, спробуйте ще раз.")
