@@ -40,6 +40,19 @@ def edit_dish():
     except ValueError:
         print("❌ Помилка введення. Ціна має бути числом.")
 
+# ФУНКЦІЯ ВИДАЛЕННЯ СТРАВИ
+def delete_dish():
+    show_menu()
+    try:
+        index = int(input("\nВведіть номер страви для видалення: ")) - 1
+        if 0 <= index < len(dishes):
+            removed = dishes.pop(index)
+            print(f"✅ Страва '{removed['name']}' видалена!")
+        else:
+            print("❌ Такої страви немає.")
+    except ValueError:
+        print("❌ Помилка! Введіть число (номер страви).")
+
 # Підрахунок суми
 def calculate_total():
     total = sum(dish['price'] for dish in dishes)
@@ -52,6 +65,7 @@ if __name__ == "__main__":
         print("1. Додати страву")
         print("2. Порахувати загальну суму")
         print("3. Редагувати страву")
+        print("4. Видалити страву")
         print("0. Вихід")
 
         choice = input("\nОберіть дію: ")
@@ -62,8 +76,11 @@ if __name__ == "__main__":
             calculate_total()
         elif choice == "3":
             edit_dish()
+        elif choice == "4":
+            delete_dish()
         elif choice == "0":
             print("Дякуємо, що завітали!")
             break
         else:
             print("❌ Невірний вибір, спробуйте ще раз.")
+            
