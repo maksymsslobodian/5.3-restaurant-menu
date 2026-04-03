@@ -5,7 +5,7 @@ dishes = [
     {"name": "Узвар", "price": 30}
 ]
 
-# Показує меню і його оформлення
+# 1. Функція показу меню (Твоя частина - красивий вивід)
 def show_menu():
     print("\n" + "="*30)
     print("      МЕНЮ РЕСТОРАНУ")
@@ -14,7 +14,7 @@ def show_menu():
         print(f"{index}. {dish['name']:<15} | {dish['price']:>5} грн")
     print("="*30)
 
-# Щоб додавати страви
+# 2. Функція додавання (Твоя частина)
 def add_dish():
     print("\n--- Додавання нової страви ---")
     name = input("Введіть назву: ")
@@ -25,7 +25,7 @@ def add_dish():
     except ValueError:
         print("❌ Помилка! Ціна має бути числом.")
 
-# Редагування страви
+# 3. Функція редагування (Твоя частина)
 def edit_dish():
     show_menu()
     try:
@@ -40,20 +40,7 @@ def edit_dish():
     except ValueError:
         print("❌ Помилка введення. Ціна має бути числом.")
 
-# ФУНКЦІЯ ВИДАЛЕННЯ СТРАВИ
-def delete_dish():
-    show_menu()
-    try:
-        index = int(input("\nВведіть номер страви для видалення: ")) - 1
-        if 0 <= index < len(dishes):
-            removed = dishes.pop(index)
-            print(f"✅ Страва '{removed['name']}' видалена!")
-        else:
-            print("❌ Такої страви немає.")
-    except ValueError:
-        print("❌ Помилка! Введіть число (номер страви).")
-
-# Підрахунок суми
+# 4. Функція підрахунку суми (Твоя частина)
 def calculate_total():
     total = sum(dish['price'] for dish in dishes)
     print(f"\n💰 Загальна вартість усіх страв: {total} грн")
@@ -65,7 +52,6 @@ if __name__ == "__main__":
         print("1. Додати страву")
         print("2. Порахувати загальну суму")
         print("3. Редагувати страву")
-        print("4. Видалити страву")
         print("0. Вихід")
 
         choice = input("\nОберіть дію: ")
@@ -76,11 +62,8 @@ if __name__ == "__main__":
             calculate_total()
         elif choice == "3":
             edit_dish()
-        elif choice == "4":
-            delete_dish()
         elif choice == "0":
             print("Дякуємо, що завітали!")
             break
         else:
             print("❌ Невірний вибір, спробуйте ще раз.")
-            
