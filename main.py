@@ -46,6 +46,49 @@ def edit_dish():
                 print("Невірний вибір")
     if not found:
         print("Такої страви не існує!")
+
+
+def delete_dish():
+    global dishes  # Використовуємо global, щоб мати змогу змінювати загальний список
+
+    print("\n--- Видалення страви ---")
+    print("1. Видалити за назвою")
+    print("2. Видалити всі страви за категорією")
+    print("0. Повернутися до меню")
+
+    action = input("Оберіть дію: ")
+
+    if action == '1':
+        name = input("Введіть назву страви для видалення: ").strip().lower()
+        initial_count = len(dishes)
+        # Залишаємо в списку тільки ті страви, назва яких НЕ збігається із введеною
+        dishes = [d for d in dishes if d['name'].lower() != name]
+
+        if len(dishes) < initial_count:
+            print(f"✅ Страву '{name.capitalize()}' успішно видалено.")
+        else:
+            print("❌ Страву з такою назвою не знайдено.")
+
+    elif action == '2':
+        cat = input("Введіть назву категорії для видалення: ").strip().lower()
+        initial_count = len(dishes)
+        # Залишаємо тільки ті страви, категорія яких НЕ збігається із введеною
+        dishes = [d for d in dishes if d.get('category', '').lower() != cat]
+
+        deleted_count = initial_count - len(dishes)
+        if deleted_count > 0:
+            print(f"✅ Видалено страв з категорії '{cat.capitalize()}': {deleted_count}.")
+        else:
+            print("❌ Категорію не знайдено або в ній немає страв.")
+
+    elif action == '0':
+        print("Скасовано.")
+    else:
+        print("❌ Невідома команда.")
+
+    # Підрахунок кількості страв в меню після видалення (виконується завжди після дій 1 або 2)
+    print(f"📊 Загальна кількість страв у меню: {len(dishes)}")
+
 if __name__ == "__main__":
     while True:
         show_menu()
@@ -63,7 +106,7 @@ if __name__ == "__main__":
         elif choice == "2":
             edit_dish()
         elif choice == "3":
-            print("Функція видалення буде реалізована в окремій гілці.")
+            delete_dish()
         elif choice == "4":
             print("Функція підрахунку буде реалізована в окремій гілці.")
         elif choice == "0":
