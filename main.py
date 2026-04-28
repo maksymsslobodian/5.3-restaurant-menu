@@ -1,4 +1,3 @@
-# Початкове меню (просто дані)
 dishes = [
     {"name": "Борщ", "price": 100, "description": "Суп", "category": "Супи"},
     {"name": "Вареники", "price": 80, "description": "З картоплею", "category": "Основні"},
@@ -17,7 +16,6 @@ def show_menu():
             if dish["category"] == c:
                 print(f"{dish['name']} - {dish['price']} грн | {dish['description']}")
 
-# функція редагування
 def edit_dish():
     name = input("Введіть назву страви для редагування: ")
     found = False
@@ -100,7 +98,6 @@ if __name__ == "__main__":
 
         choice = input("\nОберіть дію: ")
 
-        # Тут поки нічого не працює - це просто текст для вибору
         if choice == "1":
             print("Функція додавання буде реалізована в окремій гілці.")
         elif choice == "2":
