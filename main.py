@@ -1,11 +1,9 @@
-# Початкове меню
 dishes = [
     {"name": "Борщ", "price": 100},
     {"name": "Вареники", "price": 80},
     {"name": "Узвар", "price": 30}
 ]
 
-# 1. Функція показу меню (Твоя частина - красивий вивід)
 def show_menu():
     print("\n" + "="*30)
     print("      МЕНЮ РЕСТОРАНУ")
@@ -14,7 +12,6 @@ def show_menu():
         print(f"{index}. {dish['name']:<15} | {dish['price']:>5} грн")
     print("="*30)
 
-# 2. Функція додавання (Твоя частина)
 def add_dish():
     print("\n--- Додавання нової страви ---")
     name = input("Введіть назву: ")
@@ -25,7 +22,6 @@ def add_dish():
     except ValueError:
         print("❌ Помилка! Ціна має бути числом.")
 
-# 3. Функція редагування (Твоя частина)
 def edit_dish():
     show_menu()
     try:
@@ -40,12 +36,10 @@ def edit_dish():
     except ValueError:
         print("❌ Помилка введення. Ціна має бути числом.")
 
-# 4. Функція підрахунку суми (Твоя частина)
 def calculate_total():
     total = sum(dish['price'] for dish in dishes)
     print(f"\n💰 Загальна вартість усіх страв: {total} грн")
 
-# Основний цикл програми
 if __name__ == "__main__":
     while True:
         show_menu()
